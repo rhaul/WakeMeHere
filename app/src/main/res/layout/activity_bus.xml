@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BusActivity">
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:layout_margin="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:weightSum="1"
+        android:background="#80FFFFFF"
+        android:id="@+id/linearLayout">
+        <LinearLayout
+            android:focusable="true" android:focusableInTouchMode="true"
+            android:layout_width="0px" android:layout_height="0px"/>
+        <AutoCompleteTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Destination"
+            android:maxLines="1"
+            android:imeOptions="actionSearch"
+            android:inputType="textPostalAddress"
+            android:singleLine="true"
+            android:text="Shanghai Museum"
+            android:id="@+id/autoTV_place_search"
+            android:completionThreshold="3"
+            android:layout_weight="1" />
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pb_loading"
+            android:visibility="gone"
+            android:layout_margin="5dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bus_settings"
+        android:orientation="vertical"
+        android:background="#80ffffff"
+        android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="10sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginBottom="10sp"
+                android:gravity="center"
+                android:text="Wake me up at this distance from destination"
+                android:id="@+id/textView" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <SeekBar
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:max="4"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seekBar_bus_distance" />
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="200 m"
+                    android:layout_marginLeft="5sp"
+                    android:id="@+id/tv_bus_distanceValue" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SET ALARM"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@color/alizarin"
+            android:id="@+id/b_bus_setAlarm" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="C:\Github\SleepyHead\materialDesign\src\main\res" >
+            <file
+                name="progress_indeterminate_animation"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\anim\progress_indeterminate_animation.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="snackbar_hide_animation"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\anim\snackbar_hide_animation.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="snackbar_show_animation"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\anim\snackbar_show_animation.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="background_button"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\background_button.9.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="background_button_float"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\background_button_float.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="background_button_rectangle"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\background_button_rectangle.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="background_checkbox"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\background_checkbox.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="background_checkbox_check"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\background_checkbox_check.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="background_checkbox_uncheck"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\background_checkbox_uncheck.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="background_progress"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\background_progress.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="background_switch_ball_uncheck"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\background_switch_ball_uncheck.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="background_transparent"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\background_transparent.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="shadow_down"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\shadow_down.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="shadow_right"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable\shadow_right.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="sprite_check"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-hdpi\sprite_check.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="sprite_check"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-ldpi\sprite_check.png"
+                qualifiers="ldpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="sprite_check"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-mdpi\sprite_check.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="dialog_background"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-xhdpi\dialog_background.9.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="float_button1_shadowp"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-xhdpi\float_button1_shadowp.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="float_button_shadow1"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-xhdpi\float_button_shadow1.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_reloj_max"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-xhdpi\ic_reloj_max.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="sprite_check"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-xhdpi\sprite_check.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="sprite_check"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\drawable-xxhdpi\sprite_check.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="color_selector"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\layout\color_selector.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="dialog"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\layout\dialog.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="number_indicator_spinner"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\layout\number_indicator_spinner.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="snackbar"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\layout\snackbar.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="text"
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\layout\text.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\values\attributes.xml"
+                qualifiers="" >
+                <declare-styleable name="CustomAttributes" >
+
+                    <!-- indicate if the slider must show number indicator -->
+                    <attr
+                        name="showNumberIndicator"
+                        format="boolean" />
+                    <!-- in progress view indicate max value of progress -->
+                    <attr
+                        name="max"
+                        format="integer" />
+                    <!-- in progress view indicate min value of progress -->
+                    <attr
+                        name="min"
+                        format="integer" />
+                    <!-- in progress view indicate value of progress -->
+                    <attr
+                        name="value"
+                        format="integer" />
+                    <!-- in progress view indicate value of progress -->
+                    <attr
+                        name="progress"
+                        format="integer" />
+                    <!-- in switche's view indicate state of view -->
+                    <attr
+                        name="check"
+                        format="boolean" />
+                    <!-- in float button indicate icon resource -->
+                    <attr
+                        name="iconFloat"
+                        format="integer" />
+                    <!-- in float button indicate if must start with animation -->
+                    <attr
+                        name="animate"
+                        format="boolean" />
+                    <!-- Speed of ripple animation -->
+                    <attr
+                        name="rippleSpeed"
+                        format="float" />
+                    <!-- in float button indicate if must start with animation -->
+                    <attr
+                        name="rippleColor"
+                        format="color|reference" />
+                </declare-styleable>
+            </file>
+            <file
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\values\colors.xml"
+                qualifiers="" >
+                <color name="green" >#00FF00
+                </color>
+            </file>
+            <file
+                path="C:\Github\SleepyHead\materialDesign\src\main\res\values\strings.xml"
+                qualifiers="" >
+                <string name="app_name" >MaterialDesign
+                </string>
+            </file>
+        </source>
+        <source path="C:\Github\SleepyHead\materialDesign\build\generated\res\rs\release" />
+        <source path="C:\Github\SleepyHead\materialDesign\build\generated\res\generated\release" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="C:\Github\SleepyHead\materialDesign\src\release\res" />
+    </dataSet>
+
+</merger>
