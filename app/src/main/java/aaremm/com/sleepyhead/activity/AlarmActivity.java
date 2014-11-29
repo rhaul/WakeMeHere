@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import aaremm.com.sleepyhead.R;
 import aaremm.com.sleepyhead.config.BApp;
+import aaremm.com.sleepyhead.service.UserActivityService;
 import aaremm.com.sleepyhead.service.UserLocationService;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -35,31 +36,54 @@ public class AlarmActivity extends Activity {
         setContentView(R.layout.activity_alarm);
         ButterKnife.inject(this);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        displayATRNotification();
+        final int mode = getIntent().getIntExtra("mode", 0);
+        if(mode==0) {
+            displayBusATRNotification();
+            tv_address.setText(BApp.getInstance().getDestAdress());
+            tv_radius.setText(BApp.getInstance().getGeofenceRadius() + " metres away.");
+        }else{
+            displayMetroATRNotification();
+            tv_address.setText(BApp.getInstance().getDestMetroStationName());
+            tv_radius.setVisibility(View.GONE);
+        }
         vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
         vib.vibrate(new long[]{0,1000,500},0);
-        tv_address.setText(BApp.getInstance().getDestAdress());
-        tv_radius.setText(BApp.getInstance().getGeofenceRadius()+" metres away.");
         b_setAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 vib.cancel();
-                BApp.getInstance().resetAlarm();
                 nf.cancel(15000);
-                Intent pushIntent = new Intent(AlarmActivity.this, UserLocationService.class);
-                stopService(pushIntent);
+                if(mode == 0) {
+                    BApp.getInstance().resetBusAlarm();
+                    Intent pushIntent = new Intent(AlarmActivity.this, UserLocationService.class);
+                    stopService(pushIntent);
+                }else {
+                    BApp.getInstance().resetMetroAlarm();
+                    Intent push1Intent = new Intent(AlarmActivity.this, UserActivityService.class);
+                    stopService(push1Intent);
+                }
                 finish();
             }
         });
     }
 
-    private void displayATRNotification() {
+    private void displayBusATRNotification() {
         nf = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_launcher)
                 .setTicker("About to reach!")
                 .setContentTitle("Destination Alarm")
                 .setContentText(BApp.getInstance().getDestAdress()+" at "+(int)BApp.getInstance().getGeofenceRadius()+" m away.");
+        nf.notify(15000, mBuilder.build());
+    }
+
+    private void displayMetroATRNotification() {
+        nf = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_launcher)
+                .setTicker("About to reach!")
+                .setContentTitle("Destination Alarm")
+                .setContentText(BApp.getInstance().getDestMetroStationName());
         nf.notify(15000, mBuilder.build());
     }
     @Override

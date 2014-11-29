@@ -8,4 +8,107 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="aaremm.com.sleepyhead.activity.MetroActivity">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/turqoise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <AutoCompleteTextView
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:hint="Source"
+                android:padding="15dp"
+                android:background="@color/turqoise"
+                android:completionThreshold="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/acet_metro_source"  >
+
+                <requestFocus />
+            </AutoCompleteTextView>
+<!--
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B"
+                android:id="@+id/b_metro_source" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:hint="Destination"
+                android:padding="15dp"
+                android:textColor="@color/white"
+                android:background="@color/turqoise"
+                android:completionThreshold="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/acet_metro_dest" />
+<!--
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B"
+                android:id="@+id/b_metro_dest" />-->
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_metro_config"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Route"
+            android:textColor="@color/turqoise"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:id="@+id/textView" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/lv_metro_journey" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SET ALARM"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@color/turqoise"
+            android:id="@+id/b_metro_setAlarm" />
+    </LinearLayout>
+
 </RelativeLayout>

@@ -50,7 +50,8 @@
 
         <activity
             android:name=".activity.MetroActivity"
-            android:label="@string/title_activity_metro"></activity>
+            android:label="@string/title_activity_metro"
+            android:windowSoftInputMode="stateVisible" ></activity>
         <activity
             android:name=".activity.AlarmActivity"
             android:excludeFromRecents="true"

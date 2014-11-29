@@ -12,6 +12,7 @@ import com.google.android.gms.location.ActivityRecognitionResult;
 import com.google.android.gms.location.DetectedActivity;
 
 import aaremm.com.sleepyhead.R;
+import aaremm.com.sleepyhead.activity.AlarmActivity;
 import aaremm.com.sleepyhead.config.BApp;
 
 
@@ -76,16 +77,34 @@ public class ActivityRecognitionIS extends IntentService {
      */
     private void doSomethingFromType(int activityType) {
         switch (activityType) {
-            case DetectedActivity.IN_VEHICLE:
-                // subway or bus
-                if (BApp.getInstance().isAlarmNeeded()){
-                    showAlarmNotification();
+            case DetectedActivity.ON_FOOT:
+                if(BApp.getInstance().getCurrentActivity() == 0) {
+                    BApp.getInstance().setCurrentActivity(1);
+                    BApp.getInstance().setStatus(1); // 1- just left
+                    Log.d("Activity", "csubway");
+                    Intent temp = new Intent(BApp.USER_ACTIVITY_BROADCAST);
+                    sendBroadcast(temp);
+                }else{
+                    Log.d("Activity", "subway");
                 }
-                Log.d("Activity", "Vehicle");
+                break;
+            case DetectedActivity.STILL:
+                if(BApp.getInstance().getCurrentActivity() == 1) {
+                    BApp.getInstance().setCurrentActivity(0);
+                    BApp.getInstance().setCurrentStationNo();
+                    BApp.getInstance().setStatus(0); // 0- i am here
+                    Log.d("Activity", "cstill");
+                    Intent temp = new Intent(BApp.USER_ACTIVITY_BROADCAST);
+                    sendBroadcast(temp);
+                    if(BApp.getInstance().getCurrentStationNo() >= BApp.getInstance().getAlarmStationNo()){
+                        startActivity(new Intent(this, AlarmActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK).putExtra("mode",1));
+                    }
+                }else{
+                    Log.d("Activity", "still");
+                }
                 break;
 
         }
-        Log.d("UserActivity", "Something");
     }
 
     private void showAlarmNotification() {

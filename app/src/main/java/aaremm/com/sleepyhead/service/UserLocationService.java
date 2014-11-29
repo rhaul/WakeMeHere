@@ -143,7 +143,7 @@ public class UserLocationService extends Service implements
         Log.d("Updated Location: ", Double.toString(location.getLatitude()) + "," +
                 Double.toString(location.getLongitude()));
         BApp.getInstance().setCurrentLocation(new LatLng(location.getLatitude(), location.getLongitude()));
-        Intent temp = new Intent(BApp.BROADCAST);
+        Intent temp = new Intent(BApp.LOCATION_BROADCAST);
         temp.putExtra(BApp.INTENT_ACTION, BApp.LC_ACTION);
         sendBroadcast(temp);
     }
@@ -323,7 +323,7 @@ public class UserLocationService extends Service implements
 
         // If adding the geofences was successful
         if (LocationStatusCodes.SUCCESS == statusCode) {
-            Intent temp = new Intent(BApp.BROADCAST);
+            Intent temp = new Intent(BApp.LOCATION_BROADCAST);
             temp.putExtra(BApp.INTENT_ACTION, BApp.GEOFENCES_ACTION);
             sendBroadcast(temp);
         } else {

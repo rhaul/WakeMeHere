@@ -221,7 +221,7 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
             BApp.getInstance().setGeofenceRadius(radius);
             Intent pushIntent = new Intent(this, UserLocationService.class);
             startService(pushIntent);
-            IntentFilter intentFilter = new IntentFilter(BApp.BROADCAST);
+            IntentFilter intentFilter = new IntentFilter(BApp.LOCATION_BROADCAST);
             registerReceiver(onLocationChanged, intentFilter);
             hideAlarmSetOptions();
 
@@ -269,19 +269,17 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
-        IntentFilter intentFilter = new IntentFilter(BApp.BROADCAST);
+        IntentFilter intentFilter = new IntentFilter(BApp.LOCATION_BROADCAST);
         registerReceiver(onLocationChanged, intentFilter);
     }
-
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onPause() {
+        super.onPause();
         if (dialog != null) {
             dialog.dismiss();
         }
         unregisterReceiver(onLocationChanged);
     }
-
     private void displayAlarmSetNotification() {
         NotificationManager nf;
         NotificationCompat.Builder mBuilder;

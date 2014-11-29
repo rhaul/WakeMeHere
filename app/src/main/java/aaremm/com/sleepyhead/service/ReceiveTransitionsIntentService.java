@@ -54,7 +54,7 @@ public class ReceiveTransitionsIntentService extends IntentService {
                     LocationClient.getTriggeringGeofences(intent);
             // Test that a valid transition was reported
             if (transitionType == Geofence.GEOFENCE_TRANSITION_ENTER) {
-                startActivity(new Intent(this, AlarmActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK));
+                startActivity(new Intent(this, AlarmActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK).putExtra("mode",0));
 
             }
         }
