@@ -52,12 +52,13 @@ public class AlarmActivity extends Activity {
             @Override
             public void onClick(View v) {
                 vib.cancel();
-                nf.cancel(15000);
                 if(mode == 0) {
+                    nf.cancel(15000);
                     BApp.getInstance().resetBusAlarm();
                     Intent pushIntent = new Intent(AlarmActivity.this, UserLocationService.class);
                     stopService(pushIntent);
-                }else {
+                }else{
+                    nf.cancel(15001);
                     BApp.getInstance().resetMetroAlarm();
                     Intent push1Intent = new Intent(AlarmActivity.this, UserActivityService.class);
                     stopService(push1Intent);
@@ -70,7 +71,7 @@ public class AlarmActivity extends Activity {
     private void displayBusATRNotification() {
         nf = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.ic_stat_icon2)
                 .setTicker("About to reach!")
                 .setContentTitle("Destination Alarm")
                 .setContentText(BApp.getInstance().getDestAdress()+" at "+(int)BApp.getInstance().getGeofenceRadius()+" m away.");
@@ -80,11 +81,11 @@ public class AlarmActivity extends Activity {
     private void displayMetroATRNotification() {
         nf = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.ic_stat_icon2)
                 .setTicker("About to reach!")
                 .setContentTitle("Destination Alarm")
                 .setContentText(BApp.getInstance().getDestMetroStationName());
-        nf.notify(15000, mBuilder.build());
+        nf.notify(15001, mBuilder.build());
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

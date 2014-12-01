@@ -12,15 +12,15 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="O"
+            android:gravity="center"
             android:textColor="@color/white"
             android:background="@color/peter"
             android:textStyle="bold"
-            android:textSize="40sp"
-            android:padding="20dp"
+            android:textSize="30sp"
             android:layout_marginRight="10dp"
             android:id="@+id/tv_jStation_type" />
 
@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Status"
+                android:textColor="@color/voilet"
                 android:visibility="gone"
                 android:id="@+id/tv_jStation_status" />
         </LinearLayout>

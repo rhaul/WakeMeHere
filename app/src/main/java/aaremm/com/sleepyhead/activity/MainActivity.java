@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 
 import aaremm.com.sleepyhead.R;
 import butterknife.ButterKnife;
@@ -14,16 +14,16 @@ import butterknife.InjectView;
 
 
 public class MainActivity extends Activity  implements View.OnClickListener {
-    @InjectView(R.id.rl_select_bus)RelativeLayout rl_bus;
-    @InjectView(R.id.rl_select_metro)RelativeLayout rl_metro;
+    @InjectView(R.id.ll_select_bus)LinearLayout ll_bus;
+    @InjectView(R.id.ll_select_metro)LinearLayout ll_metro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
-        rl_bus.setOnClickListener(this);
-        rl_metro.setOnClickListener(this);
+        ll_bus.setOnClickListener(this);
+        ll_metro.setOnClickListener(this);
 
     }
 
@@ -32,12 +32,12 @@ public class MainActivity extends Activity  implements View.OnClickListener {
     public void onClick(View v) {
 
         switch (v.getId()){
-            case R.id.rl_select_bus:{
+            case R.id.ll_select_bus:{
                 Intent intent = new Intent(this,BusActivity.class);
                 startActivity(intent);
                 break;
             }
-            case R.id.rl_select_metro:{
+            case R.id.ll_select_metro:{
                 Intent intent = new Intent(this,MetroActivity.class);
                 startActivity(intent);
                 break;

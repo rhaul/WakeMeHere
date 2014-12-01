@@ -73,11 +73,16 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
     double destLat,destLong;
     float radius = 200;
     String destAddress;
+
+    NotificationManager nf;
+    NotificationCompat.Builder mBuilder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus);
         ButterKnife.inject(this);
+        BApp.getInstance().resetBusAlarm();
         manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (Geocoder.isPresent()) {
             geocoder = new Geocoder(this, Locale.getDefault());
@@ -176,9 +181,13 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
 
     private void showAlarmSetOptions() {
         ll_alarmSettings.setVisibility(View.VISIBLE);
+        sb_distance.setVisibility(View.VISIBLE);
     }
     private void hideAlarmSetOptions() {
         ll_alarmSettings.setVisibility(View.GONE);
+    }private void disableAlarmSetOptions() {
+        b_setAlarm.setText("DISABLE ALARM");
+        sb_distance.setVisibility(View.GONE);
     }
 
 
@@ -205,7 +214,20 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.b_bus_setAlarm:{
-                checkGPS();
+                if(BApp.getInstance().getSPBoolean("busalarm")){
+                    nf.cancel(15000);
+                    BApp.getInstance().resetBusAlarm();
+                    now.remove();
+                    destiny.remove();
+                    circle.remove();
+                    hideAlarmSetOptions();
+                    b_setAlarm.setText("SET ALARM");
+                    Intent pushIntent = new Intent(BusActivity.this, UserLocationService.class);
+                    stopService(pushIntent);
+                    BApp.getInstance().setSPBoolean("busalarm",false);
+                }else {
+                    checkGPS();
+                }
                 break;
             }
         }
@@ -223,8 +245,6 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
             startService(pushIntent);
             IntentFilter intentFilter = new IntentFilter(BApp.LOCATION_BROADCAST);
             registerReceiver(onLocationChanged, intentFilter);
-            hideAlarmSetOptions();
-
         } else {
             /*Toast.makeText(this, "GPS disabled",
                     Toast.LENGTH_SHORT).show();*/
@@ -281,11 +301,9 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
         unregisterReceiver(onLocationChanged);
     }
     private void displayAlarmSetNotification() {
-        NotificationManager nf;
-        NotificationCompat.Builder mBuilder;
         nf = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.drawable.ic_stat_icon2)
                 .setTicker("Destination Alarm Set")
                 .setContentTitle("Destination Alarm Set")
                 .setContentText(destAddress+" at "+(int)radius+" m");
@@ -302,6 +320,8 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
             } else if (BApp.GEOFENCES_ACTION.equalsIgnoreCase(action)) {
                 //displayCLandGeofences();
                 displayAlarmSetNotification();
+                disableAlarmSetOptions();
+                BApp.getInstance().setSPBoolean("busalarm",true);
             }
         }
     };
@@ -318,7 +338,7 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
         builder.include(BApp.getInstance().getGeofenceLL());
         builder.include(latLng);
         LatLngBounds bounds = builder.build();
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds,200);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds,300);
         mMap.animateCamera(cameraUpdate);
     }
 
@@ -336,7 +356,6 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
                 addresses = geocoder.getFromLocationName(params[0], 1);
             } catch (IOException e) {
                 e.printStackTrace();
-                Toast.makeText(mContext, "Connection Timed out!", Toast.LENGTH_SHORT).show();
             }if (addresses != null && addresses.size()>0) {
                 //loading.setVisibility(View.VISIBLE);
                 destLat = addresses.get(0).getLatitude();
@@ -360,6 +379,8 @@ public class BusActivity extends FragmentActivity implements View.OnClickListene
             if(value){
                 setUpDestMarker(destLat,destLong);
                 showGeofence(radius);
+            }else{
+                Toast.makeText(mContext, "Connection Timed out!", Toast.LENGTH_SHORT).show();
             }
         }
     }

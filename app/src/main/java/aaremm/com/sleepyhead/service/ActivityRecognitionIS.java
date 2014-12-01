@@ -77,7 +77,7 @@ public class ActivityRecognitionIS extends IntentService {
      */
     private void doSomethingFromType(int activityType) {
         switch (activityType) {
-            case DetectedActivity.ON_FOOT:
+            case DetectedActivity.IN_VEHICLE:
                 if(BApp.getInstance().getCurrentActivity() == 0) {
                     BApp.getInstance().setCurrentActivity(1);
                     BApp.getInstance().setStatus(1); // 1- just left

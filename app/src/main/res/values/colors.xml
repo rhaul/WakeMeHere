@@ -13,8 +13,19 @@
     <color name="white">#FFFFFF</color>
     <color name="cloud">#ecf0f1</color>
     <color name="red">#FF0000</color>
-    <color name="yello">#FFFF00</color>
-    <color name="blue">#00CCFF</color>
-    <color name="green">#00FF00</color>
+    <color name="yellow">#FFFF00</color>
+
+    <color name="purple">#5F259F</color>
+    <color name="lightGreen">#87d300</color>
+    <color name="voilet">#AC4FC6</color>
+    <color name="magenta">#D71671</color>
+    <color name="orange">#FF6900</color>
+    <color name="blue">#009EDB</color>
+    <color name="lightblue">#71C5E8</color>
+    <color name="mauve">#C1A7E2</color>
+    <color name="brown">#76232F</color>
+    <color name="green">#007B5F</color>
+    <color name="pink">#EF95CF</color>
+    <color name="aqua">#2CD5C4</color>
 
 </resources>

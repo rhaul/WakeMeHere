@@ -1,15 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/peter"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
 
         <TextView
             android:layout_width="match_parent"
@@ -17,39 +11,66 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Select Transportation Mode"
             android:gravity="center"
-            android:layout_margin="10dp"
-            android:id="@+id/textView" />
+           android:textColor="@color/white"
+            android:textStyle="bold"
+            android:id="@+id/textView"
+            android:layout_marginBottom="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="215dp" />
 
-        <RelativeLayout
-            android:id="@+id/rl_select_bus"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:id="@+id/ll_select_bus"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
             android:layout_weight="1"
-            android:background="@color/alizarin"
-            android:layout_gravity="center_horizontal">
+            android:layout_margin="5dp"
+            android:background="@drawable/selector_bus"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/buss"
+                android:layout_marginTop="5dp"
+                android:id="@+id/imageView" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bus"
-                android:textSize="50sp"
                 android:textColor="@color/white"
+                android:textSize="50sp"
                 android:textStyle="bold"
-                android:id="@+id/textView2"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
+                android:id="@+id/textView2" />
+        </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/rl_select_metro"
+        <LinearLayout
+            android:id="@+id/ll_select_metro"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
             android:layout_weight="1"
-            android:background="@color/turqoise"
-            android:layout_gravity="center_horizontal">
+            android:layout_margin="5dp"
+            android:background="@drawable/selector_metro"
+            android:gravity="center"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/metroo"
+                android:layout_marginTop="5dp"
+                android:id="@+id/imageView2" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,13 +78,13 @@
                 android:text="Metro"
                 android:textSize="50sp"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 android:gravity="center_horizontal"
                 android:id="@+id/textView3"
-                android:textColor="@color/white"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
-        </RelativeLayout>
+                android:layout_below="@+id/textView2"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>

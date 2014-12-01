@@ -18,9 +18,11 @@ import aaremm.com.sleepyhead.config.BApp;
 public class JourneyAdapter extends BaseAdapter{
     private List<String> jStationList;
     private Context mContext;
-    public JourneyAdapter(Context context,List<String> d) {
+    private int color;
+    public JourneyAdapter(Context context, List<String> d, int lineColor) {
         this.mContext = context;
         this.jStationList = d;
+        color = lineColor;
         BApp.getInstance().setAlarmStationNo(jStationList.size()-2);
     }
     public int getCount() {
@@ -54,6 +56,7 @@ public class JourneyAdapter extends BaseAdapter{
 
             holder = new ViewHolder();
             holder.type = (TextView) vi.findViewById(R.id.tv_jStation_type);
+            holder.type.setBackgroundColor(mContext.getResources().getColor(color));
             holder.name = (TextView) vi.findViewById(R.id.tv_jStation_name);
             holder.status = (TextView) vi.findViewById(R.id.tv_jStation_status);
             vi.setTag(holder);
@@ -80,6 +83,9 @@ public class JourneyAdapter extends BaseAdapter{
                 holder.status.setText("I just left");
                 holder.status.setVisibility(View.VISIBLE);
             }
+        }else if(position == BApp.getInstance().getAlarmStationNo()){
+            holder.status.setText("Alarm goes off here");
+            holder.status.setVisibility(View.VISIBLE);
         }else{
             holder.status.setVisibility(View.GONE);
         }

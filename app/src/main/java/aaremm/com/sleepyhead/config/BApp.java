@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import aaremm.com.sleepyhead.R;
 import aaremm.com.sleepyhead.object.Station;
 
 public class BApp extends Application {
@@ -96,6 +97,7 @@ public class BApp extends Application {
         editor.putInt(key, value);
         editor.commit();
     }
+
     public static void setSPString(String key, String value) {
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(getInstance());
@@ -309,7 +311,27 @@ public class BApp extends Application {
     public void resetBusAlarm() {
         setSPBoolean(WA_ALARM_STATUS, false);
         setSPBoolean(WA_NOT_NEEDED_STATUS, false);
+        setSPBoolean("busalarm",false);
     }
+
+    public Integer[] lineColors = new Integer[]{
+            R.color.red,
+            R.color.lightGreen,
+            R.color.yellow,
+            R.color.purple,
+            R.color.voilet,
+            R.color.magenta,
+            R.color.orange,
+            R.color.blue,
+            R.color.lightblue,
+            R.color.mauve,
+            R.color.brown,
+            R.color.green,
+            R.color.pink,
+            R.color.blue,
+            R.color.blue,
+            R.color.aqua,
+    };
 
     public String[] line1 = {"Xinzhuang",
             "Waihuanlu",
@@ -840,60 +862,76 @@ public class BApp extends Application {
     }
 
     public List<String> getStationListAtLineNoFromTO(int lineNo, String source, String dest) {
-        List<String> temp=getStationListAtLineNo(lineNo);
+        List<String> temp = getStationListAtLineNo(lineNo);
         int si = temp.indexOf(source);
         int di = temp.indexOf(dest);
-        int starti = si<di?si:di;
-        int endi = (si>di?si:di)+1;
-        temp = temp.subList(starti,endi);
-        if(si>di){
+        int starti = si < di ? si : di;
+        int endi = (si > di ? si : di);
+        if(lineNo != 4) {
+            temp = temp.subList(starti, endi+1);
+        }else{
+            int str = Math.abs(endi-starti);
+            int lop = Math.abs(temp.size()-endi)+starti;
+            if(str<=lop){
+                temp = temp.subList(starti, endi+1);
+            }else{
+                List<String> temp1 = temp.subList(0,starti+1);
+                Collections.reverse(temp1);
+                List<String> temp2 = temp.subList(endi,temp.size());
+                Collections.reverse(temp2);
+                temp = new ArrayList<String>(temp1);
+                temp.addAll(temp2);
+            }
+        }
+        if (si > di) {
             Collections.reverse(temp);
         }
         return temp;
     }
-    public List<String> getStationListAtLineNo(int lineNo){
+
+    public List<String> getStationListAtLineNo(int lineNo) {
         switch (lineNo) {
             case 1: {
-                return  Arrays.asList(line1);
+                return Arrays.asList(line1);
             }
             case 2: {
-                return  Arrays.asList(line2);
+                return Arrays.asList(line2);
             }
             case 3: {
-                return  Arrays.asList(line3);
+                return Arrays.asList(line3);
             }
             case 4: {
-                return  Arrays.asList(line4);
+                return Arrays.asList(line4);
             }
             case 5: {
-                return  Arrays.asList(line5);
+                return Arrays.asList(line5);
             }
             case 6: {
-                return  Arrays.asList(line6);
+                return Arrays.asList(line6);
             }
             case 7: {
-                return  Arrays.asList(line7);
+                return Arrays.asList(line7);
             }
             case 8: {
-                return  Arrays.asList(line8);
+                return Arrays.asList(line8);
             }
             case 9: {
-                return  Arrays.asList(line9);
+                return Arrays.asList(line9);
             }
             case 10: {
-                return  Arrays.asList(line10);
+                return Arrays.asList(line10);
             }
             case 11: {
-                return  Arrays.asList(line11);
+                return Arrays.asList(line11);
             }
             case 12: {
-                return  Arrays.asList(line12);
+                return Arrays.asList(line12);
             }
             case 13: {
-                return  Arrays.asList(line13);
+                return Arrays.asList(line13);
             }
             case 16: {
-                return  Arrays.asList(line16);
+                return Arrays.asList(line16);
             }
         }
         return null;
@@ -902,18 +940,21 @@ public class BApp extends Application {
     public int getCurrentStationNo() {
         return getSPInteger("cstation");
     }
+
     public void setCurrentStationNo() {
-            setSPInteger("cstation", getSPInteger("cstation") + 1);
+        setSPInteger("cstation", getSPInteger("cstation") + 1);
     }
+
     public void setCurrentActivity(int a) { // 0- still 1- moving
-        setSPInteger("cactivity",a);
+        setSPInteger("cactivity", a);
     }
+
     public int getCurrentActivity() { // 0- still 1- moving
         return getSPInteger("cactivity");
     }
 
     public void setStatus(int i) {
-        setSPInteger("status",i);
+        setSPInteger("status", i);
     }
 
     public int getStatus() {
@@ -921,7 +962,7 @@ public class BApp extends Application {
     }
 
     public void setAlarmStationNo(int i) {
-        setSPInteger("alarmSN",i);
+        setSPInteger("alarmSN", i);
     }
 
     public int getAlarmStationNo() {
@@ -937,10 +978,15 @@ public class BApp extends Application {
     }
 
     public void resetMetroAlarm() {
-        setSPInteger("cstation",0);
-        setSPInteger("cactivity",0);
-        setSPInteger("status",0);
-        setSPInteger("alarmSN",-1);
+        setSPInteger("cstation", 0);
+        setSPInteger("cactivity", 0);
+        setSPInteger("status", 0);
+        setSPInteger("alarmSN", -1);
+        setSPBoolean("metroalarm",false);
+    }
+
+    public void setCurrentStationNo(int position) {
+        setSPInteger("cstation", position);
     }
 }
 

@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:weightSum="1"
-        android:background="#80FFFFFF"
+        android:background="@color/alizarin"
         android:id="@+id/linearLayout">
         <LinearLayout
             android:focusable="true" android:focusableInTouchMode="true"
@@ -28,13 +28,19 @@
             android:layout_height="wrap_content"
             android:hint="Destination"
             android:maxLines="1"
+            android:padding="10dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             android:imeOptions="actionSearch"
             android:inputType="textPostalAddress"
             android:singleLine="true"
-            android:text="Shanghai Museum"
+            android:background="@color/alizarin"
             android:id="@+id/autoTV_place_search"
             android:completionThreshold="3"
-            android:layout_weight="1" />
+            android:layout_weight="1"  >
+
+            <requestFocus />
+        </AutoCompleteTextView>
 
         <ProgressBar
             style="?android:attr/progressBarStyleSmall"
